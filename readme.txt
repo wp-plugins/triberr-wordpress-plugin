@@ -9,7 +9,7 @@ Sends your post immediately to Triberr without needing to crawl your RSS feed. A
 
 == Description ==
 
-= Triber =
+Triber
 This is an all-in-one plugin for members of Triberr.com. This is meant to seamlessly integrate your blog with Triberr so that it can send and receive posts, comments and guest posts.
 *More info:*
 
