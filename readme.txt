@@ -1,17 +1,23 @@
 === Plugin Name ===
 Contributors: Dan Cristo, Andres Hernandez, Dino Dogan
-Tags: triberr, twitter, remote publishing, blogging, guest post, guest posting
+Tags: triberr, twitter, remote publishing, blogging, guest post, guest posting, blog syndication, comment system, reBlog, social media, guest post
 Requires at least: 2.0.2
 Tested up to: 3.1.2
-Stable tag: 1.0.0
+Stable tag: 2.0.1
 
-Sends your post immediately to Triberr without needing to crawl your RSS feed. Allows tribemates to view your post in their Tribal Stream. Allows you to send and receive guest posts to your blog through Triberr.
+What does Triberr Plugin do?
+
+Sends your post immediately to Triberr without needing to crawl your RSS feed. 
+Allows tribemates to view your post in their Tribal Stream thereby saving them time and increasing the likelihood of them sharing your post.
+Allows you to send and receive guest posts to your blog through Triberr (reBlog/syndication function)
+Pulls Bio/pic/social information from your Triberr profile and ensures every reBlog has proper attribution. 
+Installs a unified view of all comments made across every instance of syndicated content. 
 
 == Description ==
 
 Triber
 This is an all-in-one plugin for members of Triberr.com. This is meant to seamlessly integrate your blog with Triberr so that it can send and receive posts, comments and guest posts.
-*More info:*
+**More info:**
 
 * [Triberr](http://triberr.com/blog.php?post=24560)
 
@@ -32,12 +38,15 @@ Right now all posts go to Triberr, but you can delete them from you Sent Stream.
 
 = If I make a change to a post, will Triberr import it again?
 
-Triberr will check to see if we already know about the post in our database. If so, we will not import it again.
+Triberr will check to see if we already know about the post in our database. If so, we will not import it again. 
 
 = Can I also import older posts into Triberr using this plugin?
 
 No, Triberr will only accept posts published within the last week.
 
+= If my post gets syndicated to other blogs, will I get the credit.
+
+Yes. Every reBlog results in the Author info pulled along with the content, so regardless of where your post is published you will be prominently featured as the Author. 
 
 == Screenshots ==
 
