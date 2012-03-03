@@ -3,7 +3,7 @@ Contributors: Dan Cristo, Andres Hernandez, Dino Dogan
 Tags: triberr, twitter, remote publishing, blogging, guest post, guest posting, blog syndication, comment system, reBlog, social media, guest post
 Requires at least: 2.0.2
 Tested up to: 3.1.2
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 
 What does Triberr Plugin do?
 

@@ -3,11 +3,13 @@
 Plugin Name: Triberr
 Plugin URI: http://triberr.com/subdomains/plugins/wordpress/
 Description: Instantly send posts from your blog from Triberr.
-Version: 2.0.1
+Version: 2.0.2
 Author: Triberr
 Author URI: http://Triberr.com/
 License: GPL2
 */
+
+$version_number = "2.0.2";
 
 // Include calls for xml-rpc
 require_once('triberr_includes/class-triberr-xmlrpc-server.php');
@@ -194,7 +196,7 @@ class triberr_append_post {
 </iframe>
 </div>
         ";
-			if($triberr_comments_status == "yes"){
+			if($triberr_comments_status == "yes" && $triberr_id != ""){ 
 			$content = $content .  $plugin;
 			}
 		} 
@@ -210,6 +212,47 @@ class triberr_append_post {
 
 // Hook into the post when loaded
 add_filter( 'the_content', array( 'triberr_append_post', 'triberr_append_post_function' ));
+
+
+
+
+/*
+function triberr_multiple($posts = NULL) {
+	if($posts != NULL) {
+		foreach($posts as $post) {
+			$triberrURL = triberr_build_url($post);
+			$triberrMSG = triberr_connect($triberrURL);
+			echo "<p>".$triberrMSG."</p>";
+		}
+	} else {
+		global $post;
+		$thisCount = 1;
+		$myposts = get_posts('numberposts=-1');
+		foreach($myposts as $post) :
+			setup_postdata($post);
+			$triberrURL = triberr_build_url($post->ID);
+			$triberrMSG = triberr_connect($triberrURL);
+			echo "<p>".$triberrMSG."</p>";
+		endforeach;
+	}
+}
+
+
+function triberr_categories($PINGKEY = NULL) {
+	$triberrCATS = triberr_connect('http://triberr.com/triber/subdomains/api/?key='.$PINGKEY.'&act=tribes');
+
+	preg_match_all('#<id>(.*?)</id>#is', $triberrCATS, $PINFO[id], PREG_SET_ORDER);
+	preg_match_all('#<name>(.*?)</name>#is', $triberrCATS, $PINFO[name], PREG_SET_ORDER);
+
+	foreach($PINFO[id] as $key => $value) {
+		if(get_option('triberr_category') === $PINFO[id][$key][1]) {
+			echo '<option value="'.$PINFO[id][$key][1].'" selected=selected>'.$PINFO[name][$key][1].'</option>';
+		} else {
+			echo '<option value="'.$PINFO[id][$key][1].'">'.$PINFO[name][$key][1].'</option>';
+		}
+	}
+}
+*/
 
 
 //ACTUALLY PING THE PUBLISHED POST TO triberr
@@ -233,6 +276,7 @@ function triberr_build_url($post_ID) {
 		'post_id'=>urlencode( $thisPost['ID']),
 		'post_type'=>urlencode($thisPost['post_type']),
 		'triberr_id'=>$triberr_id,
+		'plugin_version'=>urlencode($version_number),
 		);
 	return $fields;
 }
@@ -261,13 +305,16 @@ function triberr_connect($url, $fields) {
 		curl_close($ch);
 		//print $result;		 
 		return $result;
+//	} else {
+	//	return file_get_contents($url);
+	//}
 }
 
 function triberr_submit_post($post_ID) {
 	$thisPost = get_post($post_ID, ARRAY_A);
 			if(get_permalink( $post_ID ) != NULL) {
 				$triberrFields = triberr_build_url($post_ID);
-				$url = 'http://triberr.com/triber/subdomains/api/';
+				$url = 'http://triberr.com/subdomains/api/';
 				$triberrMSG = triberr_connect($url, $triberrFields);
 			}
 

@@ -35,7 +35,8 @@ class triberr_xmlrpc_server extends wp_xmlrpc_server {
         $methods += array(
             // Methods here.
             'Triberr.reblog' => 'this:triberr_reblog',
-            'Triberr.getSourceID' => 'this:triberr_getSourceID'
+            'Triberr.getSourceID' => 'this:triberr_getSourceID',
+            'Triberr.setSourceID' => 'this:triberr_setSourceID'
         );
         return $methods;
     }
@@ -89,7 +90,7 @@ class triberr_xmlrpc_server extends wp_xmlrpc_server {
      * Returns the triberr_id of the post that was reblogged in post_id 
      * 
      * @param array $args Method parameters. Contains:
-     * 	- post_id Must be and id of a reblogged article, otherwise it will return an empty string.
+     * 	- post_id Must be an id of a reblogged article, otherwise it will return an empty string.
      */
 	function triberr_getSourceID($args) {
 		$this->escape($args); // passed $args reference
@@ -106,6 +107,36 @@ class triberr_xmlrpc_server extends wp_xmlrpc_server {
 		return $triberr_id;
 	}
 	
+	 /**
+     * triberr_setSourceID
+     * 
+     * Assigns the triberr's rss_ext_id to the post
+     * 
+     * @param array $args Method parameters. Contains:
+     * 	- post_id 
+	 *  - source_id
+     */
+	function triberr_setSourceID($args) {
+		$this->escape($args); // passed $args reference
+		
+		$post_id   = $args[0];
+		$source_id = $args[1];
+		
+		// create a hook in case we need it
+		do_action('xmlrpc_call', 'Triberr.setSourceID');
+
+		// this data does not require authentication
+		add_post_meta($post_id, '_triberr_id', $source_id, true) ;
+		
+		logIO('O', "Assigned Triber ID: $source_id to post $post_id");	
+		
+		return true;
+	}
+	
+	
+	/**
+	 * Sends the source_id back to Triberr after receiving a reblog.
+	 */
 	function sendSourceID ($post_id, $source_id) {
 		$url = 'http://triberr.com/triber/subdomains/api/';
 		
@@ -117,8 +148,6 @@ class triberr_xmlrpc_server extends wp_xmlrpc_server {
 		);
 		
 		$result = triberr_connect($url,$fields);
-		
-		mail ('dan@dancristo.com', 'test ', 'Result:' . $result . 'curl error:');
 		return $result;
 	}
 }
