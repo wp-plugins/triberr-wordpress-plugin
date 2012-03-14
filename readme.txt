@@ -3,7 +3,7 @@ Contributors: Dan Cristo, Andres Hernandez, Dino Dogan
 Tags: triberr, twitter, remote publishing, blogging, guest post, guest posting, blog syndication, comment system, reBlog, social media, guest post
 Requires at least: 2.0.2
 Tested up to: 3.1.2
-Stable tag: 2.0.2
+Stable tag: 2.0.3
 
 What does Triberr Plugin do?
 
@@ -53,6 +53,18 @@ Yes. Every reBlog results in the Author info pulled along with the content, so r
 1. Screenshots and an installation guide can be found at: http://triberr.com/blog.php?post=24560
 
 == Changelog ==
+= 2.0.3 =
+Saving the plugin version number
+Fixed an issue with the default setting for global comment system from "Yes" to "On"
+
+= 2.0.2 =
+Saved the Triberr ID to the Wordpress Meta Data
+
+= 2.0.1 =
+Fixed a function conflict that crashed the plugin
+
+= 2.0 =
+Triberr Global Comment System
 
 = 1.0 =
 Beta release
