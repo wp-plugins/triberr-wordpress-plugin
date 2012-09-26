@@ -129,7 +129,6 @@ class triberr_xmlrpc_server extends wp_xmlrpc_server {
 		add_post_meta($post_id, '_triberr_id', $source_id, true) ;
 		
 		logIO('O', "Assigned Triber ID: $source_id to post $post_id");	
-		
 		return true;
 	}
 	
