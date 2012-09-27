@@ -3,7 +3,7 @@ Contributors: Dan Cristo, Andres Hernandez, Dino Dogan
 Tags: triberr, twitter, remote publishing, blogging, guest post, guest posting, blog syndication, comment system, reBlog, social media, guest post
 Requires at least: 2.0.2
 Tested up to: 3.4.2
-Stable tag: 3.0.0
+Stable tag: 3.0.1
 
 What does Triberr Plugin do?
 
@@ -54,6 +54,9 @@ Yes. Every reBlog results in the Author info pulled along with the content, so r
 1. Screenshots and an installation guide can be found at: http://triberr.com/blog.php?post=24560
 
 == Changelog ==
+= 3.0.1 =
+Fixed an issue where other commenting systems were not showing
+
 = 3.0.0 =
 Scheduled posts are now properly imported into Triberr
 Tribal Stream appears in Wordpress dashboard

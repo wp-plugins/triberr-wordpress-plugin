@@ -37,9 +37,8 @@ add_action('admin_menu', 'triberr_menu');
 add_filter( 'the_content', array('triberr_endorse_post', 'triberr_endorse_post_function'));
 
 // print out the commenting system
-add_filter('comments_template', 'triberr_comment_template'); 
+add_filter('comments_template', 'triberr_comment_template',9);
 
 // Hook into the 'wp_dashboard_setup' action to register our other functions
 add_action('wp_dashboard_setup', 'triberr_add_dashboard_widgets' ); // Hint: For Multisite Network Admin Dashboard use wp_network_dashboard_setup instead of wp_dashboard_setup.
-
 ?>
