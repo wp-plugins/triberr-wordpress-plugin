@@ -3,7 +3,7 @@
 Plugin Name: Triberr
 Plugin URI: http://triberr.com/subdomains/plugins/wordpress/
 Description: Instantly send posts from your blog from Triberr.
-Version: 3.0.0
+Version: 3.0.1
 Author: Triberr
 Author URI: http://Triberr.com/
 License: GPL2
